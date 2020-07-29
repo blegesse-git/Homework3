@@ -79,7 +79,8 @@ function generatePassword(len, spec, up, low, numb){
   var specialList = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
 
   count = Math.ceil((len/10)*10);
-  //For every 10 character:
+  //If they choose yes to every option:
+  //For every 10 character
   //2 special characters
   //3 numbers
   //remaining letters
@@ -107,13 +108,13 @@ function generatePassword(len, spec, up, low, numb){
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))].toUpperCase())
     }
   }
-  else {
+  else if (spec == true && numb == true && up == true && low == true) {
     for (i = 0; i < count/5; i++) {
       passwordList.push(specialList[Math.floor((Math.random() * (specialList.length)))])
       console.log("Special Char")
     }
     for (i = 0; i < ((count/10) * 3); i++) {
-      passwordList.push(numberList[Math.floor((Math.random() * (numberList.length + 1)))])
+      passwordList.push(numberList[Math.floor((Math.random() * (numberList.length)))])
       console.log("Number")
       }
     var y = Math.floor(((len - passwordList.length)/2));
@@ -125,7 +126,7 @@ function generatePassword(len, spec, up, low, numb){
     var x = len - passwordList.length;
     console.log(x)
     for (i = 0; i < x; i++ ) {
-      passwordList.push(charList[Math.floor((Math.random() * (charList.length + 1)))])
+      passwordList.push(charList[Math.floor((Math.random() * (charList.length)))])
       console.log("Lower Case")
     }
   }
@@ -144,9 +145,9 @@ function generatePassword(len, spec, up, low, numb){
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))].toUpperCase())
     }
   }
-  else {
+  else if (spec == false && numb == true && up == true && low == true) {
     for (i = 0; i < ((count/10) * 3); i++) {
-      passwordList.push(numberList[Math.floor((Math.random() * (numberList.length + 1)))])
+      passwordList.push(numberList[Math.floor((Math.random() * (numberList.length)))])
       console.log("Number")
       }
     var y = Math.floor(((len - passwordList.length)/2));
@@ -158,7 +159,7 @@ function generatePassword(len, spec, up, low, numb){
     var x = len - passwordList.length;
     console.log(x)
     for (i = 0; i < x; i++ ) {
-      passwordList.push(charList[Math.floor((Math.random() * (charList.length + 1)))])
+      passwordList.push(charList[Math.floor((Math.random() * (charList.length)))])
       console.log("Lower Case")
     }
   }
@@ -168,13 +169,18 @@ function generatePassword(len, spec, up, low, numb){
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))].toUpperCase())
     }
   }
-  else if (spec == false && numb == true && up == true && low == true){
-    for (i = 0; i < ((count/10) * 3); i++){
+  else if (spec == false && numb == false && up == true && low == true) {
+    var y = Math.floor(((len - passwordList.length)/2));
+    console.log(y)
+    for (i = 0;  i < y; i++) {
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))].toUpperCase())
+      console.log("Upper Case")
     }
-    var x = len - passwordList.length
-    for (i = 0; i < x; i++) {
+    var x = len - passwordList.length;
+    console.log(x)
+    for (i = 0; i < x; i++ ) {
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))])
+      console.log("Lower Case")
     }
   }
  
@@ -183,8 +189,6 @@ function generatePassword(len, spec, up, low, numb){
       passwordList.push(charList[Math.floor((Math.random() * (charList.length)))])
     }
   }
-
-
   console.log(passwordList)
   passwordStr = passwordList.join("")
   console.log(passwordStr)
